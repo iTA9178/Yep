@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        Realm.Configuration.defaultConfiguration = realmConfig()
+//        Realm.Configuration.defaultConfiguration = realmConfig()
 
         cacheInAdvance()
 
@@ -198,36 +198,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.deviceToken = deviceToken
     }
     
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
-
-        defer {
-            completionHandler()
-        }
-
-        guard #available(iOS 9, *) else {
-            return
-        }
-
-        guard let identifier = identifier else {
-            return
-        }
-
-        switch identifier {
-
-        case YepNotificationCommentAction:
-
-            if let replyText = responseInfo[UIUserNotificationActionResponseTypedTextKey] as? String {
-                tryReplyText(replyText, withUserInfo: userInfo)
-            }
-
-        case YepNotificationOKAction:
-
-            tryReplyText("OK", withUserInfo: userInfo)
-
-        default:
-            break
-        }
-    }
+//    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], withResponseInfo responseInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+//
+//        defer {
+//            completionHandler()
+//        }
+//
+//        guard #available(iOS 9, *) else {
+//            return
+//        }
+//
+//        guard let identifier = identifier else {
+//            return
+//        }
+//
+//        switch identifier {
+//
+//        case YepNotificationCommentAction:
+//
+//            if let replyText = responseInfo[UIUserNotificationActionResponseTypedTextKey] as? String {
+//                tryReplyText(replyText, withUserInfo: userInfo)
+//            }
+//
+//        case YepNotificationOKAction:
+//
+//            tryReplyText("OK", withUserInfo: userInfo)
+//
+//        default:
+//            break
+//        }
+//    }
 
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
